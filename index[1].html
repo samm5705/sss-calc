@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Better Calculator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="splash"><div class="slogo">
+ <svg viewBox="0 0 120 140" width="110" height="128" aria-hidden="true"><defs><linearGradient id="spg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6bd0ff"/><stop offset="1" stop-color="#2f6bff"/></linearGradient></defs><rect x="10" y="8" width="100" height="124" rx="18" fill="#071a42" stroke="url(#spg)" stroke-width="4"/><rect x="22" y="20" width="76" height="32" rx="8" fill="#02081c" stroke="#2f8bff"/><text x="90" y="44" text-anchor="end" font-size="22" font-family="ui-monospace,monospace" fill="#7fd0ff">3.14</text><g fill="#7fb4ff"><circle cx="35" cy="70" r="7"/><circle cx="60" cy="70" r="7"/><circle cx="85" cy="70" r="7"/><circle cx="35" cy="93" r="7"/><circle cx="60" cy="93" r="7"/><circle cx="85" cy="93" r="7"/><circle cx="35" cy="116" r="7"/><circle cx="60" cy="116" r="7"/></g><rect x="76" y="107" width="18" height="18" rx="6" fill="#00b4ff"/></svg>
+ <h2>Better Calculator</h2><p>Mathematics, made brilliant</p>
+</div></div>
+<button id="burger" aria-label="Open menu">☰</button>
+<div id="scrim"></div>
+<nav id="menu" aria-label="Main menu">
+ <div class="mh">🧮 Better Calculator<small id="mwho"></small></div>
+ <button data-p="calc" class="on">🧮 Calculator</button>
+ <button data-p="gr">📈 Graphs</button>
+ <button data-p="mth">∑ Mathematics</button>
+ <button data-p="conv">📏 Unit Converter</button>
+ <button data-p="cur">💱 Currency Converter</button>
+ <button data-p="dash">🕘 History</button>
+ <button data-p="set">⚙️ Settings</button>
+ <div class="sp"></div>
+ <button class="lo">⎋ Log out</button>
+</nav>
+<!--AUTH--><div id="auth"><canvas id="pt"></canvas>
+<div class="lamp"><svg viewBox="0 0 200 170" width="200" height="170" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f7bff"/><stop offset="1" stop-color="#0b3fb8"/></linearGradient><radialGradient id="lb"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#9fd2ff"/><stop offset="1" stop-color="#2f8bff" stop-opacity="0"/></radialGradient></defs><line x1="100" y1="0" x2="100" y2="48" stroke="#4a6fb5" stroke-width="3"/><path d="M52 128 Q60 52 100 46 Q140 52 148 128 Z" fill="url(#lg)" stroke="#7fb4ff" stroke-width="2"/><ellipse cx="100" cy="130" rx="50" ry="8" fill="#0b2a6b" stroke="#7fb4ff"/><ellipse cx="100" cy="136" rx="26" ry="16" fill="url(#lb)"/></svg><div class="cone"></div></div>
+<div class="stage"><div class="mascot"><svg viewBox="0 0 100 120" aria-hidden="true"><defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4aa3ff"/><stop offset="1" stop-color="#1747c9"/></linearGradient></defs><g class="arm"><rect x="78" y="46" width="9" height="30" rx="4.5" fill="#2f7bff"/><circle cx="82" cy="44" r="7" fill="#8fc4ff"/></g><rect x="14" y="20" width="68" height="92" rx="14" fill="url(#mg)" stroke="#9fd0ff" stroke-width="2"/><rect x="22" y="28" width="52" height="30" rx="7" fill="#06142e"/><ellipse class="eye" cx="38" cy="42" rx="4" ry="5" fill="#7fd0ff"/><ellipse class="eye" cx="58" cy="42" rx="4" ry="5" fill="#7fd0ff"/><path d="M40 50 Q48 57 56 50" stroke="#7fd0ff" stroke-width="2.5" fill="none" stroke-linecap="round"/><g fill="#cfe6ff" opacity=".88"><circle cx="31" cy="72" r="5"/><circle cx="48" cy="72" r="5"/><circle cx="65" cy="72" r="5"/><circle cx="31" cy="87" r="5"/><circle cx="48" cy="87" r="5"/><circle cx="65" cy="87" r="5"/><circle cx="31" cy="102" r="5"/><circle cx="48" cy="102" r="5"/><circle cx="65" cy="102" r="5"/></g></svg></div>
+<div class="box">
+  <h1 id="ahead">Welcome Back</h1>
+ <p id="asub">Sign in to continue to Better Calculator</p>
+ <div class="warn" id="cfgwarn" style="display:none">Sign-in is not configured yet, so nothing can be saved. Add your Supabase keys (see SETUP.md).</div>
+ <div class="seg" id="aseg"><button class="on" data-m="login">Sign In</button><button data-m="reg">Register</button></div>
+ <label class="al" for="au" id="aul" style="display:none">Username</label>
+ <input class="f" id="au" type="text" placeholder="Choose a username" autocomplete="username" maxlength="20" style="display:none">
+ <label class="al" for="ae" id="ael">Email Address</label>
+ <input class="f" id="ae" type="email" placeholder="you@example.com" autocomplete="email">
+ <label class="al" for="ap">Password</label>
+ <div class="pw"><input class="f" id="ap" type="password" placeholder="Enter your password" autocomplete="current-password"><button type="button" id="eye" aria-label="Show or hide password">👁</button></div>
+ <input class="f" id="ap2" type="password" placeholder="Confirm password" autocomplete="new-password" style="margin-top:8px;display:none">
+ <button class="pb" id="ago">Sign In</button>
+ <div class="msg" id="amsg"></div>
+ <button class="lnk" id="aforgot">Forgot password?</button>
+ <button class="lnk" id="aguest" style="display:none">Try the calculator without saving</button>
+</div></div></div>
+<div class="app" id="app" style="display:none">
+ <div id="bar2"><span id="who"></span><span><button id="dbtn">History</button> <button class="lo">Log out</button></span></div>
+ <div class="tabs" id="tabs">
+  <button data-p="calc" class="on">Calc</button><button data-p="conv">Units</button><button data-p="cur">Money</button><button data-p="gr">Graph</button><button data-p="mth">Math</button><button data-p="dash">History</button><button data-p="set">Settings</button>
+ </div>
+
+ <div class="pane on casio" id="calc">
+  <div class="lcd" id="lcd"><div class="ind"><span id="iS">S</span><span id="iA">A</span><span id="iH">hyp</span><span id="iM">M</span><span id="iD">R</span><span id="iP"></span></div><div id="hist"></div>
+  <input id="expr" autofocus autocomplete="off" inputmode="none" placeholder="0" aria-label="Expression">
+  <div id="res"></div></div>
+  <div class="bar"><button id="deg">RAD</button><button id="clearH">Clear history</button></div>
+  <div class="grid" id="keys" style="display:none"></div><div class="grid" id="kr1"></div><div class="grid" id="fk"></div><div class="grid" id="k5"></div>
+ </div>
+
+ <div class="pane" id="conv">
+  <label>Type</label><select id="cat"></select>
+  <label>Value</label><input class="f" id="cv" type="number" value="1" inputmode="decimal">
+  <div class="two"><div><label>From</label><select id="cf"></select></div><div><label>To</label><select id="ct"></select></div></div>
+  <button class="btn" id="swap">⇄ Swap</button>
+  <div class="out" id="cout"></div>
+ </div>
+
+ <div class="pane" id="cur">
+  <label>Amount</label><input class="f" id="ma" type="number" value="100" inputmode="decimal">
+  <div class="two"><div><label>From</label><select id="mf"></select></div><div><label>To</label><select id="mt"></select></div></div>
+  <button class="btn" id="mswap">⇄ Swap</button>
+  <div class="out" id="mout"></div>
+  <div class="sm">Rates are approximate and work offline. Edit them below to match today’s rate (1 USD =).</div>
+  <div class="rates" id="rates"></div>
+ </div>
+
+ <div class="pane" id="gr">
+  <label>Graph y =</label><input class="f" id="gf" value="sin(x)" autocomplete="off">
+  <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="gd"> Also show the derivative f′(x)</label>
+  <canvas id="cv2" width="720" height="520"></canvas>
+  <div class="two"><button class="btn" id="zin">＋ Zoom in</button><button class="btn" id="zout">－ Zoom out</button></div>
+  <div class="sm">Use x, + − × ÷ ^ and sin, cos, tan, √, ln, log. Drag the graph to move it.</div>
+ </div>
+ <div class="pane" id="mth">
+  <label>Type any math. Try 12!, gcd(12,18), combinations(10,3), det([[1,2],[3,4]]), mean(2,4,9)</label>
+  <input class="f" id="mx" autocomplete="off" placeholder="e.g. 5! + sqrt(16)">
+  <div class="rs" id="mxo"></div>
+  <label>Calculus: f(x) =</label>
+  <input class="f" id="kf" value="x^3 + 2*x" autocomplete="off">
+  <div class="two">
+   <div><label>Point x</label><input class="f" id="kx" type="number" value="1"></div>
+   <div><label>Integral from → to</label><div class="two"><input class="f" id="k1" type="number" value="0"><input class="f" id="k2" type="number" value="1"></div></div>
+  </div>
+  <div class="two"><button class="btn" id="bd">d/dx Derivative</button><button class="btn" id="bi">∫ Integral</button><button class="btn" id="bs">Solve f(x)=0</button><button class="btn" id="bl">Limit at x</button></div>
+  <div class="rs" id="ko"></div>
+  <label>More tools: algebra, geometry, statistics, matrices, finance and more</label>
+  <select id="tl"></select>
+  <input class="f" id="ti" autocomplete="off" style="margin-top:8px">
+  <button class="btn" id="tg">Calculate</button>
+  <div class="rs" id="to"></div>
+  <div class="sm">Use x as the variable, * to multiply, ^ for powers, pi, e. Trig uses radians here, or write 30 deg.</div>
+ </div>
+ <div class="pane" id="dash">
+  <div class="stat" id="dstat"></div>
+  <label>Recent activity</label><div id="dact"></div>
+  <label>Favourite formulas (tap ☆ next to an input to save one)</label><div id="dfav"></div>
+  <div class="two"><button class="btn lo">Log out</button><div class="sm" id="sst" style="align-self:center"></div></div>
+ </div>
+ <div class="pane" id="set">
+  <label>Angle mode</label><select id="sa"><option value="0">Radians (RAD)</option><option value="1">Degrees (DEG)</option></select>
+  <label>Number display</label>
+  <div class="two"><select id="sf"><option value="norm">Normal</option><option value="fix">Fixed decimals</option><option value="sci">Scientific</option></select><select id="sn"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option></select></div>
+  <label>Theme</label><select id="st"><option value="dark">Dark navy</option><option value="light">Light</option></select>
+  <label>Account</label><div class="rs" id="sacc"></div>
+  <button class="btn lo">Log out</button>
+ </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.4.2/math.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
